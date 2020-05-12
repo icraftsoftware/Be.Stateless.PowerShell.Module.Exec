@@ -25,7 +25,7 @@
     Copyright             = '(c) 2019 - 2020 be.stateless. All rights reserved.'
     Description           = 'Commands to work with external executables.'
     ProcessorArchitecture = 'None'
-    PowerShellVersion     = '7.0'
+    PowerShellVersion     = '5.0'
     NestedModules         = @()
     RequiredModules       = @()
 
