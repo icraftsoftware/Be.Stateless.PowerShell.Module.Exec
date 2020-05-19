@@ -53,7 +53,6 @@ function Invoke-Tool {
         [scriptblock]
         $Command
     )
-
     & $Command
-    if (-not($?)) { throw "Command {$Command} failed with code $LASTEXITCODE." }
+    if ($LASTEXITCODE -ne 0) { throw "Command {$Command} failed with code $LASTEXITCODE." }
 }
