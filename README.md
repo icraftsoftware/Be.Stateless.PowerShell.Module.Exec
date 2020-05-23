@@ -1,3 +1,3 @@
 # Be.Stateless.PowerShell.Module.Exec
 
-Commands to deploy BizTalk Server applications supported by a deployment framework featuring a declarative task model.
+Commands to deploy Microsoft BizTalk Server Applications supported by a deployment framework featuring a declarative task model.
