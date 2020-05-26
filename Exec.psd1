@@ -18,7 +18,7 @@
 
 @{
     RootModule            = 'Exec.psm1'
-    ModuleVersion         = '1.0.0.0'
+    ModuleVersion         = '1.0.0.1'
     GUID                  = '83f4143a-79ee-49ee-a510-7770a0fc1644'
     Author                = 'François Chabot'
     CompanyName           = 'be.stateless'

@@ -31,6 +31,7 @@ function Add-ToolAlias {
         [string[]]
         $Tool
     )
+    Resolve-ActionPreference -Cmdlet $PSCmdlet -SessionState $ExecutionContext.SessionState
     $expandedPath = switch -regex ($Path) {
         ^Framework { "$env:windir\Microsoft.NET\$_" }
         default { $PSCmdlet.GetUnresolvedProviderPathFromPSPath($_) }
@@ -53,6 +54,7 @@ function Invoke-Tool {
         [scriptblock]
         $Command
     )
+    Resolve-ActionPreference -Cmdlet $PSCmdlet -SessionState $ExecutionContext.SessionState
     & $Command
     if ($LASTEXITCODE -ne 0) { throw "Command {$Command} failed with code $LASTEXITCODE." }
 }
