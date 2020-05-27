@@ -39,9 +39,7 @@ function Add-ToolAlias {
     if (-not(Test-Path -LiteralPath $expandedPath -PathType Container)) { throw "Cannot resolve '$Path'." }
     $Tool | ForEach-Object -Process {
         $toolPath = Join-Path -Path $expandedPath -ChildPath "$_.exe" -Resolve
-        # add alias in parent scope only, i.e. caller's scope, see https://mohitgoyal.co/2016/12/26/understand-scopes-in-powershell-part-1/
-        # You can refer to scopes by name or by a number that describes the relative position of one scope to another. Scope 0 represents the
-        # current, or local, scope. Scope 1 indicates the immediate parent scope. Scope 2 indicates the parent of the parent scope, and so on.
+        # add alias in parent scope only, i.e. caller's scope, https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_scopes?view=powershell-7#managing-scope
         Set-Alias -Name $_ -Value $toolPath -Scope 1 -Verbose:($PSBoundParameters.ContainsKey('Verbose'))
     }
 }
