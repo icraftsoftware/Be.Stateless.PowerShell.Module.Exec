@@ -29,7 +29,12 @@ function Add-ToolAlias {
 
         [Parameter(Mandatory = $true)]
         [string[]]
-        $Tool
+        $Tool,
+
+        [Parameter(Mandatory = $false)]
+        [ValidateSet('Global', 'Local')]
+        [string]
+        $Scope = 'Local'
     )
     Resolve-ActionPreference -Cmdlet $PSCmdlet -SessionState $ExecutionContext.SessionState
     $expandedPath = switch -regex ($Path) {
@@ -40,7 +45,9 @@ function Add-ToolAlias {
     $Tool | ForEach-Object -Process {
         $toolPath = Join-Path -Path $expandedPath -ChildPath "$_.exe" -Resolve
         # add alias in parent scope only, i.e. caller's scope, https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_scopes?view=powershell-7#managing-scope
-        Set-Alias -Name $_ -Value $toolPath -Scope 1 -Verbose:($PSBoundParameters.ContainsKey('Verbose'))
+        Set-Alias -Name $_ -Value $toolPath `
+            -Scope $(if ($Scope -eq 'Local') { 1 } else { $Scope }) `
+            -Verbose:($PSBoundParameters['Verbose'] -eq $true)
     }
 }
 
