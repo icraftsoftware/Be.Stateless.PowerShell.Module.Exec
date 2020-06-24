@@ -27,7 +27,9 @@
     ProcessorArchitecture = 'None'
     PowerShellVersion     = '5.0'
     NestedModules         = @()
-    RequiredModules       = @('Psx')
+    RequiredModules       = @(
+        @{ ModuleName = 'Psx' }
+    )
 
     AliasesToExport       = @()
     CmdletsToExport       = @()
