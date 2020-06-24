@@ -33,4 +33,11 @@
     CmdletsToExport       = @()
     FunctionsToExport     = @('Add-ToolAlias', 'Invoke-Tool')
     VariablesToExport     = @()
+    PrivateData           = @{
+        PSData = @{
+            Tags       = @('Exe', 'Exec', 'Executables', 'PowerShell', 'Tools')
+            LicenseUri = 'https://github.com/icraftsoftware/Be.Stateless.PowerShell.Module.Exec/blob/master/LICENSE'
+            ProjectUri = 'https://github.com/icraftsoftware/Be.Stateless.PowerShell.Module.Exec'
+        }
+    }
 }
