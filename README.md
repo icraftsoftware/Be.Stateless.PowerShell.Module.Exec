@@ -1,4 +1,4 @@
-﻿# Be.Stateless.PowerShell.Module.Exec
+# Be.Stateless.PowerShell.Module.Exec
 
 [![Build Status](https://dev.azure.com/icraftsoftware/be.stateless/_apis/build/status/Be.Stateless.PowerShell.Module.Exec%20Manual%20Release?branchName=master)](https://dev.azure.com/icraftsoftware/be.stateless/_build/latest?definitionId=24&branchName=master)
 [![GitHub Release](https://img.shields.io/github/v/release/icraftsoftware/Be.Stateless.PowerShell.Module.Exec)](https://github.com/icraftsoftware/Be.Stateless.PowerShell.Module.Exec/releases/latest)
