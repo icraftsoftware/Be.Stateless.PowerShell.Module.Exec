@@ -28,7 +28,7 @@
     PowerShellVersion     = '5.0'
     NestedModules         = @()
     RequiredModules       = @(
-        @{ ModuleName = 'Psx' }
+        @{ ModuleName = 'Psx' ; ModuleVersion = '1.0.20176.40884' }
     )
 
     AliasesToExport       = @()
