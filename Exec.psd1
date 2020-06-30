@@ -27,9 +27,7 @@
     ProcessorArchitecture = 'None'
     PowerShellVersion     = '5.0'
     NestedModules         = @()
-    RequiredModules       = @(
-        @{ ModuleName = 'Psx' ; ModuleVersion = '1.0.20176.40884' }
-    )
+    RequiredModules       = @('Psx')
 
     AliasesToExport       = @()
     CmdletsToExport       = @()
@@ -37,9 +35,10 @@
     VariablesToExport     = @()
     PrivateData           = @{
         PSData = @{
-            Tags       = @('Exe', 'Exec', 'Executables', 'PowerShell', 'Tools')
-            LicenseUri = 'https://github.com/icraftsoftware/Be.Stateless.PowerShell.Module.Exec/blob/master/LICENSE'
-            ProjectUri = 'https://github.com/icraftsoftware/Be.Stateless.PowerShell.Module.Exec'
+            Tags                       = @('Exe', 'Exec', 'Executables', 'PowerShell', 'Tools')
+            LicenseUri                 = 'https://github.com/icraftsoftware/Be.Stateless.PowerShell.Module.Exec/blob/master/LICENSE'
+            ProjectUri                 = 'https://github.com/icraftsoftware/Be.Stateless.PowerShell.Module.Exec'
+            ExternalModuleDependencies = @('Psx')
         }
     }
 }
