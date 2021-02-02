@@ -16,7 +16,7 @@
 
 #endregion
 
-Import-Module -Name $PSScriptRoot\..\Exec -Force
+Import-Module -Name $PSScriptRoot\..\..\Exec -Force
 
 Describe 'Add-ToolAlias' {
     InModuleScope Exec {
