@@ -24,10 +24,12 @@ function Add-ToolAlias {
     [OutputType([void])]
     param (
         [Parameter(Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
         [string]
         $Path,
 
         [Parameter(Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
         [string[]]
         $Tool,
 
@@ -56,10 +58,18 @@ function Invoke-Tool {
     [OutputType([void])]
     param (
         [Parameter(Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
         [scriptblock]
-        $Command
+        $Command,
+
+        [Parameter(Mandatory = $false)]
+        [ValidateNotNullOrEmpty()]
+        [scriptblock]
+        $ThrowUnless = $null
     )
     Resolve-ActionPreference -Cmdlet $PSCmdlet -SessionState $ExecutionContext.SessionState
-    & $Command
-    if ($LASTEXITCODE -ne 0) { throw "Command {$Command} failed with code $LASTEXITCODE." }
+    & $Command | Tee-Object -Variable output
+    if ($LASTEXITCODE -ne 0 -and ($ThrowUnless -eq $null -or ($output | Where-Object -FilterScript $ThrowUnless | Test-None))) {
+        throw "Command {$Command} failed with exit code $LASTEXITCODE."
+    }
 }

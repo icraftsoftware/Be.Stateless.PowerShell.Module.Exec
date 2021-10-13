@@ -20,11 +20,17 @@ Import-Module -Name $PSScriptRoot\..\..\Exec -Force
 
 Describe 'Invoke-Tool' {
     InModuleScope Exec {
-        It 'Does not throw when return code indicates success.' {
+        It 'Does not throw when exit code indicates success.' {
             { Invoke-Tool -Command { cmd /c 'exit 0' } } | Should -Not -Throw
         }
-        It 'Throws when return code indicates failure.' {
-            { Invoke-Tool -Command { cmd /c 'exit 5' } } | Should -Throw -ExpectedMessage "Command { cmd /c 'exit 5' } failed with code 5."
+        It 'Throws when exit code indicates failure.' {
+            { Invoke-Tool -Command { cmd /c 'exit 5' } } | Should -Throw -ExpectedMessage "Command { cmd /c 'exit 5' } failed with exit code 5."
+        }
+        It 'Does not throw when exit code indicates failure but output is expected.' {
+            { Invoke-Tool -Command { cmd /c '@echo Expected failure. && exit 7' } -ThrowUnless { $_ -match '^Expected failure\.' } } | Should -Not -Throw
+        }
+        It 'Throws when exit code indicates failure and output is not expected.' {
+            { Invoke-Tool -Command { cmd /c '@echo Unexpected failure. && exit 7' } -ThrowUnless { $_ -match '^Expected failure\.' } } | Should -Throw -ExpectedMessage "Command { cmd /c '@echo Unexpected failure. && exit 7' } failed with exit code 7."
         }
     }
 }
