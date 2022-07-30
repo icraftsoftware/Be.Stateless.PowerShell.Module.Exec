@@ -50,7 +50,7 @@ function Add-ToolAlias {
    if (-not(Test-Path -LiteralPath $expandedPath -PathType Container)) { throw "Cannot resolve '$Path'." }
    $Tool | ForEach-Object -Process {
       $toolPath = Join-Path -Path $expandedPath -ChildPath "$_.exe" -Resolve
-      # add alias in parent scope only, i.e. caller's scope, https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_scopes?view=powershell-7#managing-scope
+      # add alias in parent scope only, i.e. caller's scope, https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_scopes#managing-scope
       Set-Alias -Option ReadOnly -Name $_ -Value $toolPath `
          -Scope $(if ($Scope -eq 'Local') { 1 } else { $Scope }) `
          -Force:$Force `

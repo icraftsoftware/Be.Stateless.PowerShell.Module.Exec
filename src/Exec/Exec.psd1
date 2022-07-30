@@ -37,10 +37,12 @@
    VariablesToExport     = @()
    PrivateData           = @{
       PSData = @{
-         Tags                       = @('be.stateless.be', 'icraftsoftware', 'Exe', 'Exec', 'Executables', 'PowerShell', 'Tools')
+         Tags                       = @('be.stateless', 'icraftsoftware', 'Exe', 'Exec', 'Executables', 'PowerShell', 'Tools')
          LicenseUri                 = 'https://github.com/icraftsoftware/Be.Stateless.PowerShell.Module.Exec/blob/master/LICENSE'
          ProjectUri                 = 'https://github.com/icraftsoftware/Be.Stateless.PowerShell.Module.Exec'
+         IconUri                    = 'https://github.com/icraftsoftware/Be.Stateless.Build.Scripts/raw/master/nuget.png'
          ExternalModuleDependencies = @('Psx')
+         Prerelease                 = 'preview'
       }
    }
 }
